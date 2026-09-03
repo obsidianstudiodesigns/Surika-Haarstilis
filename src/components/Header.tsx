@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone, MessageCircle, Sparkles, MapPin } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle, MapPin } from 'lucide-react';
 import { Language } from '../types';
 import { salonAssets, salonContact } from '../data/salonData';
 
@@ -23,7 +23,6 @@ export function Header({ lang, onLanguageChange, onOpenBooking }: HeaderProps) {
 
   const navLinks = [
     { href: '#hero', label: { af: 'Tuis', en: 'Home' } },
-    { href: '#specials', label: { af: 'Aanbiedinge', en: 'Specials' }, highlight: true },
     { href: '#transformasies', label: { af: 'Transformasies', en: 'Transformations' } },
     { href: '#dienste', label: { af: 'Dienste & Pryse', en: 'Services' } },
     { href: '#oor-surika', label: { af: 'Oor Surika', en: 'About' } },
@@ -35,39 +34,25 @@ export function Header({ lang, onLanguageChange, onOpenBooking }: HeaderProps) {
       id="main-header"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-[#072929]/95 backdrop-blur-md py-2.5 shadow-xl border-b border-[#C5A059]/30 text-white'
-          : 'bg-gradient-to-b from-[#041818]/90 via-[#072929]/60 to-transparent py-4 text-white'
+          ? 'bg-[#072929]/95 backdrop-blur-md py-2 shadow-xl border-b border-[#C5A059]/30 text-white'
+          : 'bg-gradient-to-b from-[#041818]/90 via-[#072929]/60 to-transparent py-3 sm:py-4 text-white'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Logo & Brand Name */}
+          {/* Enlarged Logo Only (Text removed as requested) */}
           <a
             href="#hero"
-            className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-[#C5A059] rounded-lg p-1"
+            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#C5A059] rounded-full p-0.5"
+            aria-label="Surika Haarstilis - Tuis"
           >
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-[#C5A059] shadow-md group-hover:scale-105 transition-transform duration-300 bg-white p-0.5">
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden border-2 border-[#C5A059] shadow-xl group-hover:scale-105 transition-transform duration-300 bg-white p-1 shrink-0">
               <img
                 src={salonAssets.logo}
                 alt="Surika Haarstilis Logo"
                 className="w-full h-full object-contain"
                 referrerPolicy="no-referrer"
               />
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center gap-1.5">
-                <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-[#F3E3B5] transition-colors">
-                  Surika
-                </span>
-                <span className="text-[11px] uppercase tracking-widest text-[#E6CE8A] border-l border-[#C5A059]/50 pl-1.5 hidden sm:inline">
-                  Haarstilis
-                </span>
-              </div>
-              <span className="text-[11px] sm:text-xs text-[#FAF7F2]/80 font-light tracking-wide flex items-center gap-1">
-                <span>Reflexions Salon</span>
-                <span className="text-[#C5A059]">•</span>
-                <span className="text-[#E6CE8A]/90">Mosselbaai</span>
-              </span>
             </div>
           </a>
 
@@ -77,19 +62,9 @@ export function Header({ lang, onLanguageChange, onOpenBooking }: HeaderProps) {
               <a
                 key={link.href}
                 href={link.href}
-                className={`transition-colors py-1 relative ${
-                  link.highlight
-                    ? 'text-[#F3E3B5] font-semibold hover:text-white flex items-center gap-1'
-                    : 'text-white/85 hover:text-[#F3E3B5]'
-                }`}
+                className="transition-colors py-1 relative text-white/85 hover:text-[#F3E3B5]"
               >
-                {link.highlight && <Sparkles className="w-3.5 h-3.5 text-[#C5A059] animate-pulse" />}
                 {link.label[lang]}
-                {link.highlight && (
-                  <span className="absolute -top-1 -right-2 px-1.5 py-0.2 text-[9px] font-bold bg-[#C5A059] text-[#041818] rounded-full uppercase">
-                    -20%
-                  </span>
-                )}
               </a>
             ))}
           </nav>
@@ -182,15 +157,7 @@ export function Header({ lang, onLanguageChange, onOpenBooking }: HeaderProps) {
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-between text-base font-medium text-white/90 hover:text-[#F3E3B5] py-1.5 border-b border-white/5"
               >
-                <span className="flex items-center gap-2">
-                  {link.highlight && <Sparkles className="w-4 h-4 text-[#C5A059]" />}
-                  {link.label[lang]}
-                </span>
-                {link.highlight && (
-                  <span className="text-[10px] font-bold bg-[#C5A059] text-[#041818] px-2 py-0.5 rounded-full">
-                    -20%
-                  </span>
-                )}
+                <span>{link.label[lang]}</span>
               </a>
             ))}
           </div>

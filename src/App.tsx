@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Language } from './types';
 import { Header } from './components/Header';
 import { HeroVideoSection } from './components/HeroVideoSection';
-import { SpecialsSection } from './components/SpecialsSection';
 import { TransformationsSection } from './components/TransformationsSection';
 import { ServicesSection } from './components/ServicesSection';
 import { AboutSection } from './components/AboutSection';
@@ -34,16 +33,10 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main>
-        {/* Hero Section with Responsive Desktop / Mobile Media & Floating Sparkles */}
+        {/* Hero Section */}
         <HeroVideoSection
           lang={lang}
           onOpenBooking={() => handleOpenBooking()}
-        />
-
-        {/* Specials Section (Extracted directly from Flyer 2) */}
-        <SpecialsSection
-          lang={lang}
-          onOpenBooking={handleOpenBooking}
         />
 
         {/* Before & After Transformations (Extracted directly from Work done 1 - 4) */}

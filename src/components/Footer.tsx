@@ -61,12 +61,6 @@ export function Footer({ lang }: FooterProps) {
                 </a>
               </li>
               <li>
-                <a href="#specials" className="hover:text-[#C5A059] transition-colors flex items-center gap-1">
-                  <span>{lang === 'af' ? 'Vrouemaand Specials (20%)' : 'Specials & Discounts (20%)'}</span>
-                  <Sparkles className="w-3 h-3 text-[#C5A059]" />
-                </a>
-              </li>
-              <li>
                 <a href="#transformasies" className="hover:text-[#C5A059] transition-colors">
                   {lang === 'af' ? 'Voor & Na Transformasies' : 'Before & After Transformations'}
                 </a>
