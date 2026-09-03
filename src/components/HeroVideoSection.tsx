@@ -10,15 +10,26 @@ interface HeroVideoSectionProps {
 export function HeroVideoSection({ lang, onOpenBooking }: HeroVideoSectionProps) {
   return (
     <section id="hero" className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center overflow-hidden bg-[#041818] pt-24 pb-12 lg:py-24">
-      {/* Background Media Container: HTML5 Video Background */}
+      {/* Background Media Container: HTML5 Video Background (Responsive for Mobile & Desktop) */}
       <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Mobile Video: Optimized vertical aspect ratio */}
+        <video
+          src={salonAssets.heroVideoMobile}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="block sm:hidden w-full h-full object-cover object-center"
+        />
+
+        {/* Desktop / Tablet Video */}
         <video
           src={salonAssets.heroVideo}
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover object-center scale-102"
+          className="hidden sm:block w-full h-full object-cover object-center scale-102"
         />
 
         {/* Dreamy Gradient Overlays for optimal readability and luxury atmosphere */}

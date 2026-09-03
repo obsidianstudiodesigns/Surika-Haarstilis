@@ -1,5 +1,6 @@
 import logoImg from '../assets/images/LOGO.jpg';
 import heroVideo from '../assets/images/LANDING PAGE VIDEO.mp4';
+import heroVideoMobile from '../assets/images/landing page video mobile.mp4';
 import work1Full from '../assets/images/Work done 1.jpg';
 import work1Before from '../assets/images/work1_before.jpg';
 import work1After from '../assets/images/work1_after.jpg';
@@ -18,6 +19,7 @@ import { ServiceItem, TransformationItem, SpecialOffer, Testimonial } from '../t
 export const salonAssets = {
   logo: logoImg,
   heroVideo: heroVideo,
+  heroVideoMobile: heroVideoMobile,
   work1: {
     full: work1Full,
     before: work1Before,
