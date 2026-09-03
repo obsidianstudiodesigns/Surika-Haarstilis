@@ -1,0 +1,7 @@
+{
+  "name": "Surika Haarstilis & Kleurspesialis @ Reflexions Salon",
+  "description": "Eksklusiewe dromerige haarsalon in Mosselbaai. Spesialis in haarkleur, Goldwell Elumen, balayage, snywerk en luukse haarbehandelings vir pragtige, selfversekerde hare.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

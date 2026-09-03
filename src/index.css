@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Cinzel', Georgia, serif;
+  --font-script: 'Alex Brush', cursive;
+
+  --color-teal-950: #041818;
+  --color-teal-900: #072929;
+  --color-teal-850: #093737;
+  --color-teal-800: #0B4F4F;
+  --color-teal-700: #106660;
+  --color-teal-600: #167D76;
+  --color-teal-500: #1C968E;
+
+  --color-gold-300: #F3E3B5;
+  --color-gold-400: #E6CE8A;
+  --color-gold-500: #C5A059;
+  --color-gold-600: #B38C44;
+  --color-gold-700: #8E6C2E;
+
+  --color-sand-50: #FDFBF8;
+  --color-sand-100: #FAF7F2;
+  --color-sand-200: #F3ECE1;
+  --color-sand-300: #E7DCcb;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 10s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF1C5 0%, #C5A059 50%, #99752D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-foil-border {
+  border-image: linear-gradient(to bottom right, #F3E3B5, #C5A059, #8E6C2E) 1;
+}
+
+/* Custom delicate scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #C5A059;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B38C44;
+}
+
