@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Sparkles, MessageCircle, Eye, X, ZoomIn, ShieldCheck, Columns, Image as ImageIcon } from 'lucide-react';
+import { Sparkles, MessageCircle, Eye, X, ZoomIn, ShieldCheck, Columns } from 'lucide-react';
 import { Language, TransformationItem } from '../types';
 import { transformations } from '../data/salonData';
 
@@ -11,8 +11,8 @@ interface TransformationsSectionProps {
 export function TransformationsSection({ lang, onOpenBooking }: TransformationsSectionProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [activeModalItem, setActiveModalItem] = useState<TransformationItem | null>(null);
-  const [modalView, setModalView] = useState<'split' | 'before' | 'after' | 'full'>('split');
-  const [cardViews, setCardViews] = useState<Record<string, 'split' | 'before' | 'after' | 'full'>>({
+  const [modalView, setModalView] = useState<'split' | 'before' | 'after'>('split');
+  const [cardViews, setCardViews] = useState<Record<string, 'split' | 'before' | 'after'>>({
     'work-1': 'split',
     'work-2': 'split',
     'work-3': 'split',
@@ -20,7 +20,7 @@ export function TransformationsSection({ lang, onOpenBooking }: TransformationsS
   });
 
   const categories = [
-    { id: 'all', label: { af: 'Alle Transformasies (1 – 4)', en: 'All Transformations (1 – 4)' } },
+    { id: 'all', label: { af: 'Alle Transformasies', en: 'All Transformations' } },
     { id: 'highlights', label: { af: 'Karamell Highlights', en: 'Caramel Highlights' } },
     { id: 'bleach-tone', label: { af: 'Goldwell SilkLift Blond', en: 'Goldwell SilkLift Blonde' } },
     { id: 'creative-color', label: { af: 'Elumen Violet', en: 'Elumen Violet' } },
@@ -31,7 +31,7 @@ export function TransformationsSection({ lang, onOpenBooking }: TransformationsS
     ? transformations
     : transformations.filter((t) => t.category === selectedCategory);
 
-  const setViewForCard = (id: string, view: 'split' | 'before' | 'after' | 'full') => {
+  const setViewForCard = (id: string, view: 'split' | 'before' | 'after') => {
     setCardViews((prev) => ({ ...prev, [id]: view }));
   };
 
@@ -95,23 +95,18 @@ export function TransformationsSection({ lang, onOpenBooking }: TransformationsS
                 key={item.id}
                 className="bg-[#093737] rounded-2xl overflow-hidden border border-[#C5A059]/40 shadow-2xl hover:border-[#C5A059] transition-all duration-300 flex flex-col justify-between group"
               >
-                {/* Media Controls Bar: Toggle between Split, Before, After, Full Collage */}
-                <div className="bg-[#052424] px-4 py-2.5 border-b border-[#C5A059]/30 flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-[#041818] text-[#F3E3B5] text-[11px] font-bold border border-[#C5A059]/40">
-                      {lang === 'af' ? `Werk #${index + 1}` : `Work #${index + 1}`}
-                    </span>
-                    <span className="text-xs text-[#E6CE8A] font-medium hidden sm:inline">
-                      {item.tagline[lang]}
-                    </span>
-                  </div>
+                {/* Media Controls Bar: Toggle between Split, Before, After */}
+                <div className="bg-[#052424] px-4 py-2.5 border-b border-[#C5A059]/30 flex items-center justify-between gap-2">
+                  <span className="text-xs text-[#FAF7F2]/70 font-medium">
+                    {lang === 'af' ? 'Aansig:' : 'View:'}
+                  </span>
 
                   {/* View Mode Buttons */}
                   <div className="flex items-center gap-1 bg-[#093737] p-1 rounded-lg border border-[#C5A059]/30 text-xs">
                     <button
                       type="button"
                       onClick={() => setViewForCard(item.id, 'split')}
-                      className={`px-2 py-1 rounded font-medium transition-colors cursor-pointer flex items-center gap-1 ${
+                      className={`px-2.5 py-1 rounded font-medium transition-colors cursor-pointer flex items-center gap-1 ${
                         currentView === 'split'
                           ? 'bg-[#C5A059] text-[#041818] font-bold shadow'
                           : 'text-white/70 hover:text-white'
@@ -124,7 +119,7 @@ export function TransformationsSection({ lang, onOpenBooking }: TransformationsS
                     <button
                       type="button"
                       onClick={() => setViewForCard(item.id, 'before')}
-                      className={`px-2 py-1 rounded font-medium transition-colors cursor-pointer ${
+                      className={`px-2.5 py-1 rounded font-medium transition-colors cursor-pointer ${
                         currentView === 'before'
                           ? 'bg-[#C5A059] text-[#041818] font-bold shadow'
                           : 'text-white/70 hover:text-white'
@@ -136,7 +131,7 @@ export function TransformationsSection({ lang, onOpenBooking }: TransformationsS
                     <button
                       type="button"
                       onClick={() => setViewForCard(item.id, 'after')}
-                      className={`px-2 py-1 rounded font-medium transition-colors cursor-pointer ${
+                      className={`px-2.5 py-1 rounded font-medium transition-colors cursor-pointer ${
                         currentView === 'after'
                           ? 'bg-[#C5A059] text-[#041818] font-bold shadow'
                           : 'text-white/70 hover:text-white'
@@ -144,19 +139,6 @@ export function TransformationsSection({ lang, onOpenBooking }: TransformationsS
                       title={lang === 'af' ? 'Kyk Slegs Na' : 'View After Only'}
                     >
                       {lang === 'af' ? 'Na' : 'After'}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setViewForCard(item.id, 'full')}
-                      className={`px-2 py-1 rounded font-medium transition-colors cursor-pointer flex items-center gap-1 ${
-                        currentView === 'full'
-                          ? 'bg-[#C5A059] text-[#041818] font-bold shadow'
-                          : 'text-white/70 hover:text-white'
-                      }`}
-                      title={lang === 'af' ? 'Oorspronklike Plakkaat' : 'Original Poster'}
-                    >
-                      <ImageIcon className="w-3 h-3" />
-                      <span>{lang === 'af' ? 'Plakkaat' : 'Poster'}</span>
                     </button>
                   </div>
                 </div>
@@ -217,20 +199,6 @@ export function TransformationsSection({ lang, onOpenBooking }: TransformationsS
                       />
                       <div className="absolute top-3 left-3 bg-[#0B4F4F]/90 text-[#F3E3B5] border border-[#C5A059]/60 text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">
                         {lang === 'af' ? 'NA' : 'AFTER'}
-                      </div>
-                    </div>
-                  )}
-
-                  {currentView === 'full' && (
-                    <div className="relative w-full h-full">
-                      <img
-                        src={item.imageSrc}
-                        alt={`${item.title[lang]} - Full Collage`}
-                        className="w-full h-full object-contain object-center bg-black/60"
-                        referrerPolicy="no-referrer"
-                      />
-                      <div className="absolute top-3 left-3 bg-[#041818]/90 text-[#F3E3B5] border border-[#C5A059]/60 text-[11px] font-bold px-2.5 py-0.5 rounded shadow">
-                        {lang === 'af' ? 'Oorspronklike Werk' : 'Original Client Poster'}
                       </div>
                     </div>
                   )}
@@ -387,15 +355,6 @@ export function TransformationsSection({ lang, onOpenBooking }: TransformationsS
                 >
                   {lang === 'af' ? 'Na' : 'After'}
                 </button>
-                <button
-                  type="button"
-                  onClick={() => setModalView('full')}
-                  className={`px-3 py-1 rounded font-medium cursor-pointer ${
-                    modalView === 'full' ? 'bg-[#C5A059] text-[#041818] font-bold' : 'text-white/80 hover:text-white'
-                  }`}
-                >
-                  {lang === 'af' ? 'Volle Plakkaat' : 'Full Poster'}
-                </button>
               </div>
             </div>
 
@@ -447,17 +406,6 @@ export function TransformationsSection({ lang, onOpenBooking }: TransformationsS
                   />
                 </div>
               )}
-
-              {modalView === 'full' && (
-                <div className="p-4 flex flex-col items-center">
-                  <img
-                    src={activeModalItem.imageSrc}
-                    alt="Full Poster"
-                    className="max-h-[480px] w-auto object-contain rounded"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-              )}
             </div>
 
             {/* Extra product preview if available (Work 3) */}
@@ -481,9 +429,6 @@ export function TransformationsSection({ lang, onOpenBooking }: TransformationsS
             )}
 
             <div className="space-y-1">
-              <span className="text-xs uppercase tracking-widest text-[#E6CE8A]">
-                {activeModalItem.tagline[lang]}
-              </span>
               <h3 className="text-2xl font-serif font-bold text-white">
                 {activeModalItem.title[lang]}
               </h3>

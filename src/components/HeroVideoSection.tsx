@@ -37,12 +37,12 @@ export function HeroVideoSection({ lang, onOpenBooking }: HeroVideoSectionProps)
       </div>
 
       {/* Hero Content Container */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8 sm:pt-12">
-        <div className="max-w-3xl space-y-6 sm:space-y-8">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full pt-8 sm:pt-12 flex flex-col items-center">
+        <div className="max-w-4xl w-full mx-auto text-center space-y-6 sm:space-y-8 flex flex-col items-center">
 
           {/* Main Title with Calligraphic Signature Script */}
-          <div className="space-y-2">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif text-white tracking-tight leading-[1.1]">
+          <div className="space-y-3 text-center flex flex-col items-center">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif text-white tracking-tight leading-[1.1] text-center">
               <span className="block font-serif font-light text-[#F3E3B5]">
                 {lang === 'af' ? 'Pragtige, Selfversekerde Hare' : 'Beautiful, Confident Hair'}
               </span>
@@ -52,33 +52,33 @@ export function HeroVideoSection({ lang, onOpenBooking }: HeroVideoSectionProps)
             </h1>
 
             {/* Reflexions Salon Location Accent */}
-            <div className="flex items-center gap-2 text-sm sm:text-base text-white/80 font-light pt-1">
+            <div className="flex flex-wrap items-center justify-center gap-2 text-sm sm:text-base text-white/80 font-light pt-2 text-center">
               <span className="text-[#C5A059] font-medium">@ Reflexions Salon</span>
               <span>•</span>
-              <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-[#C5A059]" />
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-[#C5A059]" />
                 Oostville Sentrum, Voorbaai, Mosselbaai
               </span>
             </div>
           </div>
 
           {/* Key Trust Pillars */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
-            <div className="flex items-center gap-2 bg-[#0B4F4F]/60 border border-[#C5A059]/30 rounded-lg p-2.5 backdrop-blur-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1 w-full max-w-2xl mx-auto">
+            <div className="flex items-center justify-center sm:justify-start gap-2.5 bg-[#0B4F4F]/60 border border-[#C5A059]/30 rounded-lg p-2.5 backdrop-blur-xs text-left">
               <Award className="w-4 h-4 text-[#C5A059] shrink-0" />
               <div className="text-xs">
                 <span className="block font-semibold text-white">Goldwell Master</span>
                 <span className="text-[#FAF7F2]/70">SilkLift & Elumen</span>
               </div>
             </div>
-            <div className="flex items-center gap-2 bg-[#0B4F4F]/60 border border-[#C5A059]/30 rounded-lg p-2.5 backdrop-blur-xs">
+            <div className="flex items-center justify-center sm:justify-start gap-2.5 bg-[#0B4F4F]/60 border border-[#C5A059]/30 rounded-lg p-2.5 backdrop-blur-xs text-left">
               <ShieldCheck className="w-4 h-4 text-[#C5A059] shrink-0" />
               <div className="text-xs">
                 <span className="block font-semibold text-white">Persoonlike Diens</span>
                 <span className="text-[#FAF7F2]/70">{lang === 'af' ? '1-tot-1 Aandag' : '1-on-1 Attention'}</span>
               </div>
             </div>
-            <div className="flex items-center gap-2 bg-[#0B4F4F]/60 border border-[#C5A059]/30 rounded-lg p-2.5 backdrop-blur-xs col-span-2 sm:col-span-1">
+            <div className="flex items-center justify-center sm:justify-start gap-2.5 bg-[#0B4F4F]/60 border border-[#C5A059]/30 rounded-lg p-2.5 backdrop-blur-xs text-left">
               <Heart className="w-4 h-4 text-[#C5A059] shrink-0" />
               <div className="text-xs">
                 <span className="block font-semibold text-white">Mosselbaai Plaaslik</span>
@@ -88,7 +88,7 @@ export function HeroVideoSection({ lang, onOpenBooking }: HeroVideoSectionProps)
           </div>
 
           {/* Primary Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2 w-full flex-wrap">
             <button
               type="button"
               onClick={onOpenBooking}
@@ -108,7 +108,7 @@ export function HeroVideoSection({ lang, onOpenBooking }: HeroVideoSectionProps)
 
             <a
               href={`tel:${salonContact.phoneClean}`}
-              className="flex items-center justify-center gap-2 text-xs sm:text-sm text-[#F3E3B5] hover:text-white px-3 py-2 text-center"
+              className="flex items-center justify-center gap-2 text-xs sm:text-sm text-[#F3E3B5] hover:text-white px-4 py-2 text-center transition-colors"
             >
               <Phone className="w-4 h-4 text-[#C5A059]" />
               <span>{salonContact.phone}</span>

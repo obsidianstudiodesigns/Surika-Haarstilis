@@ -40,10 +40,10 @@ export function Header({ lang, onLanguageChange, onOpenBooking }: HeaderProps) {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Enlarged Logo Only (Text removed as requested) */}
+          {/* Enlarged Logo Only (Shifted right for balanced optical centering) */}
           <a
             href="#hero"
-            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#C5A059] rounded-full p-0.5"
+            className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#C5A059] rounded-full p-0.5 ml-4 sm:ml-10 md:ml-16 lg:ml-24 xl:ml-36 transition-all duration-300"
             aria-label="Surika Haarstilis - Tuis"
           >
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden border-2 border-[#C5A059] shadow-xl group-hover:scale-105 transition-transform duration-300 bg-white p-1 shrink-0">
